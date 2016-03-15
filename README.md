@@ -3,10 +3,9 @@
 ### chef serverの構築手順@CentOS6.7
 
 - 条件
-・/etc/hostsでホスト名の名前解決ができること。
-→　127.0.0.1   chef-server99.cs93cloud.internal　として記載。
- ※.cs93cloud.internalをつけないとchef-clientの
-・selinux停止
+ - /etc/hostsでホスト名の名前解決ができること。
+  - #hostname -sでの戻り名を書く
+- selinux停止
 
 ```
 # setenforce 0
