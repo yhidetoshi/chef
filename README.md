@@ -1,4 +1,4 @@
-# chef install config
+# chef-server/client インストール方法　レシピ など
 
 ### chef serverの構築手順@CentOS6.7
 
