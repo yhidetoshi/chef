@@ -1,5 +1,6 @@
 {
 	"run_list":[
-		"recipe[yum-install]"
+		"recipe[yum-install]",
+		"recipe[httpd]"
 	]
 }
