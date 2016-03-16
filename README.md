@@ -4,7 +4,7 @@
 
 - 条件
  - /etc/hostsでホスト名の名前解決ができること。
-  - #hostname -sでの戻り名を書く
+  - # hostname -s
 - selinux停止
 
 ```
