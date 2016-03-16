@@ -2,6 +2,7 @@ chef-soloを実行するまでに基本的な流れ
 ==========
 ```
 1. knifeコマンドでcookbooks(料理本)を作成
+  -> knife cookbook create <cookbook_name> -o cookbooks
 2. /maked_cookbooks_name/recipes/default.rbにレシピを書く
 3. 実行を定義するための.jsonを書く
 4. 実行するための.rbを書く
