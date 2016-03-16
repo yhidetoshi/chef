@@ -1,6 +1,10 @@
 # chef-server/client インストール方法　レシピ など
 ※ chef-repoはsolo
 
+- packageインストール
+ - attributes/definitionsを利用 
+- ディレクトリ作成
+
 ### chef serverの構築手順@CentOS6.7
 
 - 条件
