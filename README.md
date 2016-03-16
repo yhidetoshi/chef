@@ -66,10 +66,11 @@ root
 # knife client list
 chef-validator
 chef-webui
-
+```
 
 ### chef-clientのインストール
 ```
+
 @centOS6.5
 ホスト名が名前解決できる事が前提。
 
