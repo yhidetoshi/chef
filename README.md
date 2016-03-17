@@ -87,3 +87,14 @@ chef-webui
 httpd-tools-2.2.15-39.el6.centos.x86_64
 httpd-2.2.15-39.el6.centos.x86_64
 ```
+
+### chef勉強メモ
+===========
+- Recipe:あるべき姿を具体的に記載するスクリプト
+ - -> httpdをインストールして編集したhttpd.confを配置する
+
+- Attribute:サーバの役割、状態で変動する値
+ - -> パッケージ名(CentOSならhttpd、Ubuntuならapache)
+
+- Template:ファイルを動的に生成するテンプレート
+ - -> Attributeの値を埋め込むことができる
