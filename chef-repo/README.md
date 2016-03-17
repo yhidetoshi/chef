@@ -1,3 +1,14 @@
+chef-soloを実行するまでに基本的な流れ
+==========
+```
+1. knifeコマンドでcookbooks(料理本)を作成
+2. /maked_cookbooks_name/recipes/default.rbにレシピを書く
+3. 実行を定義するための.jsonを書く
+4. 実行するための.rbを書く
+5. 実行
+ -> # chef-solo -c <実行用_hoge.rb> -j ./<実行用_fuga.json>
+```
+
 chef-server側のレシピ作成と追加
 ==========
 ```
