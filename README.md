@@ -1,4 +1,5 @@
 # chef-server/client インストール方法　レシピ など
+※ chef-repoはsolo
 
 ### chef serverの構築手順@CentOS6.7
 
