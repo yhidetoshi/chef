@@ -1,4 +1,4 @@
-chef-server側のレシピの追加
+chef-server側のレシピ作成と追加
 ==========
 ```
 【chef-server側でレシピを作成】
