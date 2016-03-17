@@ -98,3 +98,9 @@ httpd-2.2.15-39.el6.centos.x86_64
 
 - Template:ファイルを動的に生成するテンプレート
  - -> Attributeの値を埋め込むことができる
+ 
+- Role:webやdb等のノードの役割を定義
+
+- Data_bags:クックブックに含ませたくないユーザやホストのデータを管理
+
+- Environment:環境を分ける. prod,testの様に 
