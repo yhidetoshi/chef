@@ -1,3 +1,16 @@
+
+### httpdをインストールする
+- attributesを使う(変数)
+- definitionsを使う(関数化)
+- recipe
+
+####attributes
+**default.rb (/chef-repo/cookbooks/httpd/attributes)**
+```
+default['yum']['package1'] = "httpd"
+```
+
+
 httpd Cookbook
 ==============
 TODO: Enter the cookbook description here.
