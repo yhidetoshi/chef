@@ -1,8 +1,8 @@
-#
-# Cookbook Name:: wordpress
-# Recipe:: default
-#
-# Copyright 2016, YOUR_COMPANY_NAME
-#
-# All rights reserved - Do Not Redistribute
-#
+execute "get-file-wordpress" do
+    user "root" 
+    command <<-EOH 
+	git clone #{node['file']['wordpress']}
+        mv wordpress /var/www/
+    EOH
+    #command "wget -P /var/www/ https://github.com/yhidetoshi/wordpress"
+end
