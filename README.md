@@ -10,6 +10,28 @@ chef-soloを実行するまでに基本的な流れ
  -> # chef-solo -c <実行用_hoge.rb> -j ./<実行用_fuga.json>
 ```
 
+cookbookでやっていること
+- httpd
+  - packageインストール
+  - template利用
+  - attributes利用
+  - definitions利用
+
+- yum
+ - 外部のyum-repo生成リポジトリ
+ - epel.repoを作成
+
+- nginx
+ - packageインストール
+ 
+- scripts
+ - ディレクトリ作成 
+
+- yum-install
+ - 複数の指定パッケージをインストール
+ 
+
+
 外部のcookbookを利用する
 ====
 - githubから取得する
