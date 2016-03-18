@@ -24,7 +24,7 @@ end
 ```
 
 #### template
-**chef-repo/cookbooks/httpd/templates/default**
+**chef-repo/cookbooks/httpd/templates/default/mysite.conf.erb**
 ```
 NameVirtualHost *:8000
 <VirtualHost *:8000>

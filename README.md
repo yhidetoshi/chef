@@ -10,6 +10,37 @@ chef-soloを実行するまでに基本的な流れ
  -> # chef-solo -c <実行用_hoge.rb> -j ./<実行用_fuga.json>
 ```
 
+外部のcookbookを利用する
+====
+- githubから取得する
+```
+./cookbooks
+git clone https://github.com/chef-cookbooks/yum
+```
+
+```
+# cat localhost.json
+{
+	"run_list":[
+		"recipe[yum]"
+	]
+}
+```
+
+- git cloneしてきたyumのrecipeを書き換える
+```
+# cd ./cookbooks/yum/recipes
+
+# cat default.rb
+yum_repository 'epel' do
+  description 'Extra Packages for Enterprise Linux'
+  mirrorlist 'http://mirrors.fedoraproject.org/mirrorlist?repo=epel-6&arch=$basearch'
+  gpgkey 'http://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-6'
+  action :create
+end
+```
+
+
 chef-server側のレシピ作成と追加
 ==========
 ```
