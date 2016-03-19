@@ -1,1 +1,5 @@
-default['file']['wordpress'] = "https://github.com/yhidetoshi/wordpress"
+default['file']['wordpress'] = 'https://github.com/yhidetoshi/wordpress'
+default['mysql']['root_password'] = 'password'
+default['mysql']['db_name'] = 'wordpress'
+default['mysql']['user']['name']= 'wpadmin'
+default['mysql']['user']['password'] = 'password'
