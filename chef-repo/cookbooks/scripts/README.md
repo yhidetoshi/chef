@@ -1,3 +1,15 @@
+#### ディレクトリを作成
+**default.rb (/chef-repo/cookbooks/scripts/recipes)**
+```
+directory "/opt/hoge" do
+ owner "root"
+ group "root"
+ mode 00755
+ action :create
+end
+```
+
+
 scripts Cookbook
 ================
 TODO: Enter the cookbook description here.
