@@ -94,7 +94,8 @@ end
 
 =end
 
-
+=begin
+# set_wordpress_config
 template "/var/www/wordpress/wp-config.php" do
   source "wp-config.php.erb"
   owner "nginx"
@@ -105,5 +106,14 @@ template "/var/www/wordpress/wp-config.php" do
 	:db_user => node['mysql']['user']['name'],
 	:db_pass => node['mysql']['user']['password']
  )
+end
+=end
+
+# set php.ini
+template "/etc/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode 0644
 end
 
