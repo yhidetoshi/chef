@@ -109,6 +109,18 @@ template "/var/www/wordpress/wp-config.php" do
 end
 =end
 
+# set php-fpm
+template "/etc/php-fpm.d/www.conf" do
+  source "www.conf.erb"
+  owner "root"
+  group "root"
+  mode 0644
+  variables(
+	:web_name => node['web']['name']
+)
+end
+
+=begin
 # set php.ini
 template "/etc/php.ini" do
   source "php.ini.erb"
@@ -116,4 +128,4 @@ template "/etc/php.ini" do
   group "root"
   mode 0644
 end
-
+=end
