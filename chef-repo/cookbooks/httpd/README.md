@@ -2,12 +2,27 @@
 ### httpdをインストールする
 - attributesを使う(変数)
 - definitionsを使う(関数化)
-- recipe
+- recipes
 
-####attributes
+#### attributes
 **default.rb (/chef-repo/cookbooks/httpd/attributes)**
 ```
 default['yum']['package1'] = "httpd"
+```
+
+#### definitions
+**httpd_install.rb (/chef-repo/cookbooks/httpd/definitions)**
+```
+define :httpd_install do
+   yum_package "#{node['yum']['package1']}" do
+      action :install
+   end
+end
+```
+#### recipes
+**default.rb (/chef-repo/cookbooks/httpd/recipes)**
+```
+httpd_install
 ```
 
 
