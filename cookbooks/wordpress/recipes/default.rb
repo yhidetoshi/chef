@@ -9,7 +9,7 @@ execute "get-file-wordpress" do
 end
 =end
 
-
+=begin
 # packages isntall
 install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
@@ -26,12 +26,11 @@ install_packages.each do |pkg|
 end
 
 # mysql_auto_start
-#service "mysqld" do
-#  supports :status => true, :restart => true, :reload => true
-#  action[:enable, :start]
-#end
+service "mysqld" do
+  supports :status => true, :restart => true, :reload => true
+  action[:enable, :start]
+end
 
-=begin
 # mysql_secure_install
 root_password = node["mysql"]["root_password"]
 execute "secure_install" do
@@ -91,4 +90,20 @@ template "#{Chef::Config[:file_cache_path]}/create_user.sql" do
   })
   notifies :run, "execute[create_user]", :immediately
 end
+
+
 =end
+
+
+template "/var/www/wordpress/wp-config.php" do
+  source "wp-config.php.erb"
+  owner "nginx"
+  group "nginx"
+  mode 0644
+  variables(
+	:db_name => node['mysql']['db_name'],
+	:db_user => node['mysql']['user']['name'],
+	:db_pass => node['mysql']['user']['password']
+ )
+end
+
