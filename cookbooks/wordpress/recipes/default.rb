@@ -14,6 +14,17 @@ end
 install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
 ]
+=end
+execute 'chkconfig php-fpm on' do
+  command "chkconfig php-fpm on"
+end
+
+execute 'chkconfig mysqld on' do
+  command "chkconfig mysqld on"
+end
+
+
+=begin
 
 install_packages.each do |pkg|
   bash "install_#{pkg}" do
@@ -110,6 +121,7 @@ end
 =end
 
 # set php-fpm
+=begin
 template "/etc/php-fpm.d/www.conf" do
   source "www.conf.erb"
   owner "root"
@@ -119,6 +131,7 @@ template "/etc/php-fpm.d/www.conf" do
 	:web_name => node['web']['name']
 )
 end
+=end
 
 =begin
 # set php.ini
