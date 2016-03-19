@@ -37,6 +37,7 @@ cookbookでやっていること
 
 - wordpress
  - git cloneしてwordpressをダウンロード 
+ - 必要なpackageをyumインストール
 
 外部のcookbookを利用する
 ====
