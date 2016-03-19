@@ -30,7 +30,13 @@ cookbookでやっていること
 - yum-install
  - 複数の指定パッケージをインストール
  
+- git-install
+ - OS判定
+ - インストール済みかの判定
+ - packageインストール
 
+- wordpress
+ - git cloneしてwordpressをダウンロード 
 
 外部のcookbookを利用する
 ====
