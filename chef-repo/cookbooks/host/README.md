@@ -1,3 +1,5 @@
+メモ：レシピ実行ruby系のモジュールを入れる
+
 host Cookbook
 =============
 TODO: Enter the cookbook description here.
