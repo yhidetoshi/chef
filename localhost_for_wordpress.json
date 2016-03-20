@@ -1,5 +1,7 @@
 {
 	"run_list":[
+		"recipe[nginx]",
+		"recipe[git-install]",
 		"recipe[wordpress]"
 	]
 }
