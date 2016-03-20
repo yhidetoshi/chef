@@ -1,12 +1,14 @@
 execute "get-file-wordpress" do
-    user "root" 
+    user "root"
     command <<-EOH 
-	git clone #{node['file']['wordpress']}
-        mv wordpress /var/www/
+	git clone #{node['file']['wordpress']} #{node['path']['wordpress']}
+        chown -R #{node['web']['name']}:#{node['web']['name']} #{node['path']['wordpress']}
     EOH
 end
 
+#mv wordpress /var/www/
 # packages isntall
+=begin
 install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
 ]
@@ -19,7 +21,7 @@ end
 execute 'chkconfig mysqld on' do
   command "chkconfig mysqld on"
 end
-=end
+
 
 
 install_packages.each do |pkg|
@@ -129,3 +131,5 @@ template "/etc/php.ini" do
   group "root"
   mode 0644
 end
+
+=end
