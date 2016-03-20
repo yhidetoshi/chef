@@ -1,20 +1,17 @@
-=begin
 execute "get-file-wordpress" do
     user "root" 
     command <<-EOH 
 	git clone #{node['file']['wordpress']}
         mv wordpress /var/www/
     EOH
-    #command "wget -P /var/www/ https://github.com/yhidetoshi/wordpress"
 end
-=end
 
-=begin
 # packages isntall
 install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
 ]
-=end
+
+
 execute 'chkconfig php-fpm on' do
   command "chkconfig php-fpm on"
 end
@@ -22,9 +19,8 @@ end
 execute 'chkconfig mysqld on' do
   command "chkconfig mysqld on"
 end
+=end
 
-
-=begin
 
 install_packages.each do |pkg|
   bash "install_#{pkg}" do
@@ -102,10 +98,6 @@ template "#{Chef::Config[:file_cache_path]}/create_user.sql" do
   notifies :run, "execute[create_user]", :immediately
 end
 
-
-=end
-
-=begin
 # set_wordpress_config
 template "/var/www/wordpress/wp-config.php" do
   source "wp-config.php.erb"
@@ -118,10 +110,8 @@ template "/var/www/wordpress/wp-config.php" do
 	:db_pass => node['mysql']['user']['password']
  )
 end
-=end
 
 # set php-fpm
-=begin
 template "/etc/php-fpm.d/www.conf" do
   source "www.conf.erb"
   owner "root"
@@ -131,9 +121,7 @@ template "/etc/php-fpm.d/www.conf" do
 	:web_name => node['web']['name']
 )
 end
-=end
 
-=begin
 # set php.ini
 template "/etc/php.ini" do
   source "php.ini.erb"
@@ -141,4 +129,3 @@ template "/etc/php.ini" do
   group "root"
   mode 0644
 end
-=end
