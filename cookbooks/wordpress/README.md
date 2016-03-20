@@ -1,8 +1,3 @@
-自動インストールのための不足部分
-```
-mysqld/php-fpmの自動起動設定
-```
-
 wordpress Cookbook
 ==================
 TODO: Enter the cookbook description here.
