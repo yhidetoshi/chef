@@ -3,7 +3,9 @@
 - attributesを使う(変数)
 - definitionsを使う(関数化)
 - recipes
+   -  パッケージインストール
    -  eRubyを使ってconfを設定
+   -  サービス起動
 
 #### attributes
 **default.rb (/chef-repo/cookbooks/httpd/attributes)**
@@ -53,6 +55,13 @@ template "/etc/httpd/conf.d/mysite.conf" do
   })
 end
 ```
+- サービス起動
+```
+service "httpd" do
+  action :start
+end
+```
+
 
 httpd Cookbook
 ==============
