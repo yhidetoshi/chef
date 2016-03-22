@@ -4,6 +4,8 @@
 - packageインストール
  - attributes/definitionsを利用 
 - ディレクトリ作成
+- templateを使ってconfigファイルを設定
+ - httpd.conf
 
 ### chef serverの構築手順@CentOS6.7
 
