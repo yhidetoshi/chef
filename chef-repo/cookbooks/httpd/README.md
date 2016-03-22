@@ -3,6 +3,7 @@
 - attributesを使う(変数)
 - definitionsを使う(関数化)
 - recipes
+   -  eRubyを使ってconfを設定
 
 #### attributes
 **default.rb (/chef-repo/cookbooks/httpd/attributes)**
@@ -19,12 +20,39 @@ define :httpd_install do
    end
 end
 ```
+
+#### template
+**chef-repo/cookbooks/httpd/templates/default**
+```
+NameVirtualHost *:8000
+<VirtualHost *:8000>
+        ServerName <%= @hostname %>
+        DocumentRoot /var/www/test
+        ErrorLog logs/test-error_log
+        CustomLog logs/test-access_log common
+</VirtualHost>
+```
+
 #### recipes
 **default.rb (/chef-repo/cookbooks/httpd/recipes)**
+-  definitionで定義したものを書く
 ```
 httpd_install
 ```
 
+-  configファイルをテンプレートを利用して設定
+```
+template "/etc/httpd/conf.d/mysite.conf" do
+  source "mysite.conf.erb"
+  owner	 "root"
+  group  "root"
+  mode   0644
+  action :create
+  variables({
+	:hostname => `/bin/hostname`.chomp
+  })
+end
+```
 
 httpd Cookbook
 ==============
