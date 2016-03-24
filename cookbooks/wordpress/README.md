@@ -2,10 +2,8 @@
 ```
 /var/www/wordpress/wp-config.phpの設定変更
 mysqld/php-fpmの自動起動設定
-
-# /etc/php-fpm.d/www.conf
-user = nginx
-group = nginx
+/etc/php.iniの設定
+/etc/php-fpm.d/www.confの設定
 ```
 
 wordpress Cookbook
