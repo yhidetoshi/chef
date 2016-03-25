@@ -8,25 +8,28 @@ end
 
 # packages isntall
 install_packages = %w[
-	php php-mbstring php-mysql php-fpm mysql-server
+	php php-mbstring php-mysql mysql-server php-fpm
 ]
 
 install_packages.each do |pkg|
   bash "install_#{pkg}" do
 	user "root"
   	code <<-EOC
-	  yum clean all
           yum -y install #{pkg}
         EOC
    end
 end
 
-execute 'chkconfig php-fpm on' do
+execute 'chkconfig_php-fpm_on' do
   command "chkconfig php-fpm on"
 end
 
-execute 'chkconfig mysqld on' do
+execute 'chkconfig_mysqld_on' do
   command "chkconfig mysqld on"
+end
+
+execute 'service_mysqld_start' do
+  command "service mysqld start"
 end
 
 # mysql_auto_start
@@ -57,9 +60,9 @@ end
 # create DB
 db_name = node["mysql"]["db_name"]
 execute "create_db" do
-  command "/usr/bin/mysql -u root -p#{root_password} < #{Chef::Config[:file_cache_path]}/create_db.sql"
+  command "/usr/bin/mysql -u root -p #{root_password} < #{Chef::Config[:file_cache_path]}/create_db.sql"
   action :nothing
-  not_if "/usr/bin/mysql -u root -p#{root_password} -D #{db_name}"
+  not_if "/usr/bin/mysql -u root -p #{root_password} -D #{db_name}"
 end
 
 template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
@@ -77,9 +80,9 @@ end
 user_name	= node["mysql"]["user"]["name"]
 user_password   = node["mysql"]["user"]["password"]
 execute "create_user" do
-   command "/usr/bin/mysql -u root -p#{user_password} < #{Chef::Config[:file_cache_path]}/create_user.sql"
+   command "/usr/bin/mysql -u root -p #{user_password} < #{Chef::Config[:file_cache_path]}/create_user.sql"
    action :nothing
-   not_if "/usr/bin/mysql -u #{user_name} -p#{user_password} -D #{db_name}"
+   not_if "/usr/bin/mysql -u #{user_name} -p #{user_password} -D #{db_name}"
 end
 
 template "#{Chef::Config[:file_cache_path]}/create_user.sql" do
