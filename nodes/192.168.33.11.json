@@ -1,8 +1,11 @@
 {
-	"run_list":[
+  "run_list": [
 		"recipe[yum]",
 		"recipe[git-install]",
 		"recipe[nginx]",
 		"recipe[wordpress]"
-	]
+  ],
+  "automatic": {
+    "ipaddress": "192.168.33.11"
+  }
 }

@@ -6,9 +6,7 @@ execute "get-file-wordpress" do
     EOH
 end
 
-#mv wordpress /var/www/
 # packages isntall
-=begin
 install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
 ]
@@ -132,4 +130,3 @@ template "/etc/php.ini" do
   mode 0644
 end
 
-=end
