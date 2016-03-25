@@ -11,17 +11,6 @@ install_packages = %w[
 	php php-mbstring php-mysql php-fpm mysql-server
 ]
 
-
-execute 'chkconfig php-fpm on' do
-  command "chkconfig php-fpm on"
-end
-
-execute 'chkconfig mysqld on' do
-  command "chkconfig mysqld on"
-end
-
-
-
 install_packages.each do |pkg|
   bash "install_#{pkg}" do
 	user "root"
@@ -32,10 +21,18 @@ install_packages.each do |pkg|
    end
 end
 
+execute 'chkconfig php-fpm on' do
+  command "chkconfig php-fpm on"
+end
+
+execute 'chkconfig mysqld on' do
+  command "chkconfig mysqld on"
+end
+
 # mysql_auto_start
 service "mysqld" do
   supports :status => true, :restart => true, :reload => true
-  action[:enable, :start]
+  #action[:enable, :start]
 end
 
 # mysql_secure_install
@@ -93,7 +90,7 @@ template "#{Chef::Config[:file_cache_path]}/create_user.sql" do
   variables({
 	:db_name => db_name,
         :username => user_name,
-        :password => user_password,
+        :password => user_password
   })
   notifies :run, "execute[create_user]", :immediately
 end

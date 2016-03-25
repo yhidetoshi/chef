@@ -1,8 +1,5 @@
 {
   "run_list": [
-		"recipe[yum]",
-		"recipe[git-install]",
-		"recipe[nginx]",
 		"recipe[wordpress]"
   ],
   "automatic": {
