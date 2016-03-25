@@ -1,4 +1,4 @@
-#### chef-soloのインストール方法(CentOS6_x)
+### chef-soloのインストール方法(CentOS6_x)
 ```
 まず,rubyをインストール(rbenv を使って ruby をインストール)
 -> https://github.com/yhidetoshi/Ruby_Install_memo/blob/master/README.md
@@ -15,8 +15,8 @@ Chef-soloを入れる
 ```
 
 
-chef-soloを実行するまでに基本的な流れ
-==========
+### chef-soloを実行するまでに基本的な流れ
+====
 ```
 1. knifeコマンドでcookbooks(料理本)を作成
   -> knife cookbook create <cookbook_name> -o cookbooks
