@@ -248,3 +248,14 @@ node側でchef-clientと打てばインストールがされる。
 - Data_bags:クックブックに含ませたくないユーザやホストのデータを管理
 
 - Environment:環境を分ける. prod,testの様に 
+
+
+(例)レシピの適用方法
+- nginx/recipe/
+ -> default.rbを実行させたい
+   - .jsonに `run_list[nginx]`
+
+ -> hode.rbを実行させたい
+   - .jsonに `run_list[nginx::hoge]`と書く
+        
+        
