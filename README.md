@@ -55,7 +55,7 @@ cookbookでやっていること
 - wordpress
  - wordpressを自動で構築(フロントエンドはNginx)
 
-外部のcookbookを利用する
+#### 外部のcookbookを利用する
 ====
 - githubから取得する
 ```
@@ -85,7 +85,17 @@ yum_repository 'epel' do
 end
 ```
 
+#### chef-soloをリモートhostに適用する
+```
+1. 対象ホストでchef-soloを使えるようにする
+# knife solo prepare root@<target_host>
 
+2. nodes/<target_ip>.jsonが自動で作成される
+-> .jsonにレシピを書く
+
+3. リモートhostに適用する
+# knife solo cook <target_host>
+```
 
 
 ### chef serverの構築手順@CentOS6.7
