@@ -86,52 +86,7 @@ end
 ```
 
 
-chef-server側のレシピ作成と追加
-==========
-```
-【chef-server側でレシピを作成】
-#wget --no-check-certificate -O ./chef-repo.tar.gz http://github.com/opscode/chef-repo/tarball/master
-#tar xvfz chef-repo.tar.gz
-#mv chef-chef-repo-e3efb8c chef-repo
 
-【chef-clientのファイルを設定するために環境変数を設定】
-# export EDITOR=vim
-
-# knife cookbook create httpd -o /root/chef-repo/cookbooks
-→ cookbookを追加
-** Creating cookbook httpd in /root/chef-repo/cookbooks
-** Creating README for cookbook: httpd
-** Creating CHANGELOG for cookbook: httpd
-** Creating metadata for cookbook: httpd
-
-【レシピの作成】
-#pwd
-/root/chef-repo/cookbooks/httpd/recipes
-#cat default.rb
-
-package "httpd" do
-action :install
-end
-
-【httpdをインストールするレシピをアップロード】
-# knife cookbook upload httpd -o /root/chef-repo/cookbooks
-Uploading httpd [0.1.0]
-Uploaded 1 cookbook.
-
-【chef-clientに実行させるレシピを追加】
-# knife node run_list add test-httpd.cs93cloud.internal 'recipe[httpd]'
-test-httpd.cs93cloud.internal:
-
-node側でchef-clientと打てばインストールがされる。
-```
-# chef-server/client インストール方法　レシピ など
-※ chef-repoはsolo
-
-- packageインストール
- - attributes/definitionsを利用 
-- ディレクトリ作成
-- templateを使ってconfigファイルを設定
- - httpd.conf
 
 ### chef serverの構築手順@CentOS6.7
 
@@ -219,6 +174,53 @@ chef-webui
 httpd-tools-2.2.15-39.el6.centos.x86_64
 httpd-2.2.15-39.el6.centos.x86_64
 ```
+
+chef-server側のレシピ作成と追加
+==========
+```
+【chef-server側でレシピを作成】
+#wget --no-check-certificate -O ./chef-repo.tar.gz http://github.com/opscode/chef-repo/tarball/master
+#tar xvfz chef-repo.tar.gz
+#mv chef-chef-repo-e3efb8c chef-repo
+
+【chef-clientのファイルを設定するために環境変数を設定】
+# export EDITOR=vim
+
+# knife cookbook create httpd -o /root/chef-repo/cookbooks
+→ cookbookを追加
+** Creating cookbook httpd in /root/chef-repo/cookbooks
+** Creating README for cookbook: httpd
+** Creating CHANGELOG for cookbook: httpd
+** Creating metadata for cookbook: httpd
+
+【レシピの作成】
+#pwd
+/root/chef-repo/cookbooks/httpd/recipes
+#cat default.rb
+
+package "httpd" do
+action :install
+end
+
+【httpdをインストールするレシピをアップロード】
+# knife cookbook upload httpd -o /root/chef-repo/cookbooks
+Uploading httpd [0.1.0]
+Uploaded 1 cookbook.
+
+【chef-clientに実行させるレシピを追加】
+# knife node run_list add test-httpd.cs93cloud.internal 'recipe[httpd]'
+test-httpd.cs93cloud.internal:
+
+node側でchef-clientと打てばインストールがされる。
+```
+# chef-server/client インストール方法　レシピ など
+※ chef-repoはsolo
+
+- packageインストール
+ - attributes/definitionsを利用 
+- ディレクトリ作成
+- templateを使ってconfigファイルを設定
+ - httpd.conf
 
 ### chef勉強メモ
 ===========
