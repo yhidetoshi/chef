@@ -60,9 +60,9 @@ end
 # create DB
 db_name = node["mysql"]["db_name"]
 execute "create_db" do
-  command "/usr/bin/mysql -u root -p #{root_password} < #{Chef::Config[:file_cache_path]}/create_db.sql"
+  command "/usr/bin/mysql -u root -p#{root_password} < #{Chef::Config[:file_cache_path]}/create_db.sql"
   action :nothing
-  not_if "/usr/bin/mysql -u root -p #{root_password} -D #{db_name}"
+  not_if "/usr/bin/mysql -u root -p#{root_password} -D #{db_name}"
 end
 
 template "#{Chef::Config[:file_cache_path]}/create_db.sql" do
@@ -80,9 +80,9 @@ end
 user_name	= node["mysql"]["user"]["name"]
 user_password   = node["mysql"]["user"]["password"]
 execute "create_user" do
-   command "/usr/bin/mysql -u root -p #{user_password} < #{Chef::Config[:file_cache_path]}/create_user.sql"
+   command "/usr/bin/mysql -u root -p#{user_password} < #{Chef::Config[:file_cache_path]}/create_user.sql"
    action :nothing
-   not_if "/usr/bin/mysql -u #{user_name} -p #{user_password} -D #{db_name}"
+   not_if "/usr/bin/mysql -u #{user_name} -p#{user_password} -D #{db_name}"
 end
 
 template "#{Chef::Config[:file_cache_path]}/create_user.sql" do
