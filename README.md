@@ -15,7 +15,7 @@ Chef-soloを入れる
 ```
 
 
-### chef-soloを実行するまでに基本的な流れ
+### chef-soloを実行するまでに基本的な流れ(localhost適用)
 ====
 ```
 1. knifeコマンドでcookbooks(料理本)を作成
@@ -26,6 +26,18 @@ Chef-soloを入れる
 5. 実行
  -> # chef-solo -c <実行用_hoge.rb> -j ./<実行用_fuga.json>
 ```
+
+### chef-solo(remote_host適用)
+```
+1. 対象のリモートホストにchef-soloを入れる(chef-soloサーバから実行)
+# knife solo prepare <target_host>
+
+2. ./nodes/<target_host>.jsonのファイルが生成される
+3. ./nodes/<target_host>.jsonを編集する
+4. chef-soloからtarget_hostに向けて下記のコマンドを実行 
+# /chef-repo/にて`knife solo cook <target_host>`
+```
+
 
 cookbookでやっていること
 - httpd
