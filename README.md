@@ -99,7 +99,7 @@ yum_repository 'epel' do
 end
 ```
 
-#### chef-soloをリモートhostに適用する
+### chef-soloをリモートhostに適用する
 ```
 1. 対象ホストでchef-soloを使えるようにする
 # knife solo prepare root@<target_host>
