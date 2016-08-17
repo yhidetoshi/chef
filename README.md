@@ -1,5 +1,9 @@
 ![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mydev/chef-icon.png)
 
+![Alt Text](https://github.com/yhidetoshi/Pictures/raw/master/chef_mydev/chef-model.png)
+
+[図のURL:http://goo.gl/ALFrVY]
+
 ### chef-soloのインストール方法(CentOS6_x)
 ```
 まず,rubyをインストール(rbenv を使って ruby をインストール)
